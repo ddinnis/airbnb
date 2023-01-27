@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const RoomItemWrapper = styled.div`
   color: ${props => props.theme.text.primaryColor};
+  width: ${props => props.itemWidth};
 
   box-sizing: border-box;
-  width: 25%;
   padding: 8px;
 
   font-weight: 700;

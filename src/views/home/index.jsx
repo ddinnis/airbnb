@@ -8,8 +8,8 @@ import { fetchHomeDataAction } from "@/store/modules/home";
 
 import SectionHeader from "@/components/section-header";
 import SectionRoom from "@/components/section-room";
-
-import Button from "@mui/material/Button";
+import HomeSectionTabs from "./c-cpns/home-section-tabs";
+import SectionFooter from "@/components/section-footer";
 
 const Home = memo(() => {
   const dispatch = useDispatch();
@@ -18,22 +18,44 @@ const Home = memo(() => {
     dispatch(fetchHomeDataAction());
   }, [dispatch]);
 
-  const { goodPriceInfo } = useSelector(
-    state => ({
-      goodPriceInfo: state.home.goodPriceInfo,
-    }),
-    shallowEqual
-  );
+  const { goodPriceInfo, highScoreInfo, homeDiscountInfo, hotRecommendInfo } =
+    useSelector(
+      state => ({
+        goodPriceInfo: state.home.goodPriceInfo,
+        highScoreInfo: state.home.highScoreInfo,
+        homeDiscountInfo: state.home.homeDiscountInfo,
+        hotRecommendInfo: state.home.hotRecommendInfo,
+      }),
+      shallowEqual
+    );
+
   return (
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
+        <div className="discount">
+          {/* 有值的时候渲染 */}
+          {Object.keys(homeDiscountInfo).length && (
+            <HomeSectionTabs infoData={homeDiscountInfo} />
+          )}
+        </div>
+        <div className="recommend">
+          {Object.keys(hotRecommendInfo).length && (
+            <HomeSectionTabs infoData={hotRecommendInfo} />
+          )}
+        </div>
         <div className="good-price">
+          <SectionHeader title={goodPriceInfo.title} />
+          <SectionRoom roomList={goodPriceInfo.list} itemWidth={"25%"} />
+          <SectionFooter />
+        </div>
+        <div className="high-score">
           <SectionHeader
-            title={goodPriceInfo.title}
-            subTitle={"来看看这些颇受房客好评的房源吧"}
+            title={highScoreInfo.title}
+            subTitle={highScoreInfo.subtitle}
           />
-          <SectionRoom roomList={goodPriceInfo.list} />
+          <SectionRoom roomList={highScoreInfo.list} itemWidth={"25%"} />
+          <SectionFooter />
         </div>
       </div>
     </HomeWrapper>

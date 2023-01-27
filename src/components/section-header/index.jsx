@@ -5,7 +5,7 @@ import { SectionHeaderWrapper } from "./style";
 import { IconMoreArrow } from "@/assets/svg";
 
 const SectionHeader = memo(props => {
-  const { title = "default TITLE", subTitle = "default SUBTITLE" } = props;
+  const { title, subTitle } = props;
   return (
     <SectionHeaderWrapper>
       <div className="section-header">
