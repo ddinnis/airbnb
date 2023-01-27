@@ -14,7 +14,7 @@ const lightTheme = {
     boxShadow: `
       transition: box-shadow 200ms ease;
       &:hover {
-        box-shadow: 0 2px 4px rgba(0,0,0,.18);
+        box-shadow: 0 3px 6px rgba(0,0,0,.18);
       }
     `,
   },

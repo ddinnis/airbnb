@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 export const SectionTabsWrapper = styled.div`
-  display: flex;
   margin-top: 24px;
+  overflow-x: hidden;
+
+  padding: 16px 8px;
 
   .tab {
     flex: 0 0 86px;
@@ -19,7 +21,8 @@ export const SectionTabsWrapper = styled.div`
     color: #484848;
 
     cursor: pointer;
-    ${props => props.theme.mixin.boxShadow}
+    ${props => props.theme.mixin.boxShadow};
+    box-shadow: 0px 1px 2px rgb(0 0 0 / 15%);
 
     &:last-child {
       margin-right: 0;
@@ -28,6 +31,7 @@ export const SectionTabsWrapper = styled.div`
     &.active {
       color: #fff;
       background-color: ${props => props.theme.color.secondaryColor};
+      box-shadow: 0px 7px 14px rgb(0 132 138 / 15%);
     }
   }
 `;
