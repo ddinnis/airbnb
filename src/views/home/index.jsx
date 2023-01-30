@@ -10,6 +10,7 @@ import SectionHeader from "@/components/section-header";
 import SectionRoom from "@/components/section-room";
 import HomeSectionTabs from "./c-cpns/home-section-tabs";
 import SectionFooter from "@/components/section-footer";
+import HomeSectionLongfor from "./c-cpns/home-section-longfor";
 
 const Home = memo(() => {
   const dispatch = useDispatch();
@@ -18,21 +19,32 @@ const Home = memo(() => {
     dispatch(fetchHomeDataAction());
   }, [dispatch]);
 
-  const { goodPriceInfo, highScoreInfo, homeDiscountInfo, hotRecommendInfo } =
-    useSelector(
-      state => ({
-        goodPriceInfo: state.home.goodPriceInfo,
-        highScoreInfo: state.home.highScoreInfo,
-        homeDiscountInfo: state.home.homeDiscountInfo,
-        hotRecommendInfo: state.home.hotRecommendInfo,
-      }),
-      shallowEqual
-    );
+  const {
+    goodPriceInfo,
+    highScoreInfo,
+    homeDiscountInfo,
+    hotRecommendInfo,
+    longforInfo,
+  } = useSelector(
+    state => ({
+      goodPriceInfo: state.home.goodPriceInfo,
+      highScoreInfo: state.home.highScoreInfo,
+      homeDiscountInfo: state.home.homeDiscountInfo,
+      hotRecommendInfo: state.home.hotRecommendInfo,
+      longforInfo: state.home.longforInfo,
+    }),
+    shallowEqual
+  );
 
   return (
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
+        <div className="longfor">
+          {Object.keys(longforInfo).length && (
+            <HomeSectionLongfor infoData={longforInfo} />
+          )}
+        </div>
         <div className="discount">
           {/* 有值的时候渲染 */}
           {Object.keys(homeDiscountInfo).length && (
