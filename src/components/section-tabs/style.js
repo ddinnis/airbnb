@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const SectionTabsWrapper = styled.div`
-  margin-top: 24px;
-  overflow-x: hidden;
-
-  padding: 16px 8px;
+  margin: 24px -14px 0;
+  white-space: nowrap;
+  padding: 16px 14px 0;
 
   .tab {
     flex: 0 0 86px;
