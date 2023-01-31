@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React, { memo, useState, useRef, useEffect } from "react";
 
 import { ScrollViewWrapper } from "./style";
@@ -7,6 +6,7 @@ import { IconArrowRight, IconArrowLeft } from "@/assets/svg";
 const ScrollView = memo(props => {
   const [showRight, setShowRight] = useState(false);
   const [showLeft, setShowLeft] = useState(false);
+
   const positionIndexRef = useRef(0);
   // positionIndexRef.current = 0;
   // const [positionIndex, setPositionIndex] = useState(0);

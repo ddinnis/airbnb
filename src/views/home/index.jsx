@@ -8,9 +8,10 @@ import { fetchHomeDataAction } from "@/store/modules/home";
 
 import SectionHeader from "@/components/section-header";
 import SectionRoom from "@/components/section-room";
-import HomeSectionTabs from "./c-cpns/home-section-tabs";
 import SectionFooter from "@/components/section-footer";
+import HomeSectionTabs from "./c-cpns/home-section-tabs";
 import HomeSectionLongfor from "./c-cpns/home-section-longfor";
+import HomeSectionPlus from "./c-cpns/home-section-plus";
 
 const Home = memo(() => {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ const Home = memo(() => {
     homeDiscountInfo,
     hotRecommendInfo,
     longforInfo,
+    homePlusInfo,
   } = useSelector(
     state => ({
       goodPriceInfo: state.home.goodPriceInfo,
@@ -32,6 +34,7 @@ const Home = memo(() => {
       homeDiscountInfo: state.home.homeDiscountInfo,
       hotRecommendInfo: state.home.hotRecommendInfo,
       longforInfo: state.home.longforInfo,
+      homePlusInfo: state.home.homePlusInfo,
     }),
     shallowEqual
   );
@@ -40,11 +43,6 @@ const Home = memo(() => {
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
-        <div className="longfor">
-          {Object.keys(longforInfo).length && (
-            <HomeSectionLongfor infoData={longforInfo} />
-          )}
-        </div>
         <div className="discount">
           {/* 有值的时候渲染 */}
           {Object.keys(homeDiscountInfo).length && (
@@ -54,6 +52,11 @@ const Home = memo(() => {
         <div className="recommend">
           {Object.keys(hotRecommendInfo).length && (
             <HomeSectionTabs infoData={hotRecommendInfo} />
+          )}
+        </div>
+        <div className="longfor">
+          {Object.keys(longforInfo).length && (
+            <HomeSectionLongfor infoData={longforInfo} />
           )}
         </div>
         <div className="good-price">
@@ -68,6 +71,11 @@ const Home = memo(() => {
           />
           <SectionRoom roomList={highScoreInfo.list} itemWidth={"25%"} />
           <SectionFooter />
+        </div>
+        <div className="homePlus">
+          {Object.keys(homePlusInfo).length && (
+            <HomeSectionPlus infoData={homePlusInfo} />
+          )}
         </div>
       </div>
     </HomeWrapper>

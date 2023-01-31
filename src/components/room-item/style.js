@@ -9,6 +9,8 @@ export const RoomItemWrapper = styled.div`
 
   font-weight: 700;
 
+  flex-shrink: 0;
+
   /* 没有 img 的时候也可以撑起高度 高度为宽度的2/3 */
   .cover {
     position: relative;
