@@ -1,7 +1,7 @@
-import React, { memo } from "react";
+import React, { memo } from 'react';
 
-const detail = memo(() => {
+const Detail = memo(() => {
   return <div>detail</div>;
 });
 
-export default detail;
+export default Detail;

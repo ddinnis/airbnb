@@ -1,13 +1,17 @@
-import React, { memo } from "react";
+import React, { memo } from 'react';
 
-import { MoreWrapper } from "./style";
+import { MoreWrapper } from './style';
+
+import MoreFilter from './c-cpns/more-filter';
+import MoreRooms from './c-cpns/more-rooms';
+import MorePagination from './c-cpns/more-pagination';
 
 const more = memo(() => {
   return (
     <MoreWrapper>
-      <div className="filter">filter</div>
-      <div className="rooms">rooms</div>
-      <div className="pagination">pagination</div>
+      <MoreFilter />
+      <MoreRooms />
+      <MorePagination />
     </MoreWrapper>
   );
 });
