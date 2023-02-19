@@ -1,12 +1,12 @@
-import React, { memo } from "react";
-import PropTypes from "prop-types";
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
 
-import { RoomItemWrapper } from "./style";
+import { RoomItemWrapper } from './style';
 
-import { Rating } from "@mui/material";
+import { Rating } from '@mui/material';
 
 const RoomItem = memo(props => {
-  const { itemData, itemWidth = "25%" } = props;
+  const { itemData, itemWidth = '25%' } = props;
   const color = itemData.verify_info.text_color;
 
   return (
@@ -16,7 +16,7 @@ const RoomItem = memo(props => {
           <img src={itemData.picture_url} alt="" />
         </div>
         <div className="desc" style={{ color }}>
-          {itemData.verify_info.messages.join(" · ")}
+          {itemData.verify_info.messages.join(' · ')}
         </div>
         <div className="name">{itemData.name}</div>
         <div className="price">{itemData.price_format}/晚</div>
@@ -26,7 +26,7 @@ const RoomItem = memo(props => {
             name="read-only"
             value={itemData.star_rating ?? 5}
             readOnly
-            sx={{ fontSize: "12px", color: "#00848a" }}
+            sx={{ fontSize: '12px', color: '#00848a' }}
           />
           <span className="count">{itemData.reviews_count}</span>
 
@@ -44,6 +44,6 @@ const RoomItem = memo(props => {
 
 RoomItem.propTypes = {
   itemData: PropTypes.object,
-  itemWidth: PropTypes.string,
+  itemWidth: PropTypes.string
 };
 export default RoomItem;

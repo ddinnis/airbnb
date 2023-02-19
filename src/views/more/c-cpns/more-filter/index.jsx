@@ -8,6 +8,7 @@ const MoreFilter = memo(() => {
 
   function itemClick(item) {
     const newItems = [...selectItems];
+    // 点击一次选中，再次点击取消选中
     if (newItems.includes(item)) {
       newItems.splice(newItems.indexOf(item), 1);
     } else {

@@ -1,25 +1,27 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from 'react';
 
-import { HeaderWrapper } from "./style";
+import { HeaderWrapper } from './style';
 import {
   IconLogo,
   IconGlobal,
   IconMenu,
   IconAvatar,
-  IconSearchBar,
-} from "@/assets/svg";
+  IconSearchBar
+} from '@/assets/svg';
+import { useNavigate } from 'react-router-dom';
 
 const AppHeader = memo(() => {
   const [showPanel, setShowPanel] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     function windowClick() {
       setShowPanel(false);
     }
-    window.addEventListener("click", windowClick, true);
+    window.addEventListener('click', windowClick, true);
 
     return () => {
-      window.addEventListener("click", windowClick);
+      window.addEventListener('click', windowClick);
     };
   }, []);
 
@@ -27,11 +29,15 @@ const AppHeader = memo(() => {
     setShowPanel(true);
   }
 
+  function handleLogoClick() {
+    navigate('/home');
+  }
+
   return (
     <HeaderWrapper>
       <div className="left">
         <div className="logo">
-          <IconLogo />
+          <IconLogo onClick={handleLogoClick} />
         </div>
       </div>
       <div className="center">
