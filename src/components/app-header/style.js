@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HeaderWrapper = styled.div`
   display: flex;
@@ -17,6 +17,7 @@ export const HeaderWrapper = styled.div`
 
     .logo {
       height: 80px;
+      width: 102px;
       display: flex;
       align-items: center;
       cursor: pointer;

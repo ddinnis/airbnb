@@ -12,6 +12,17 @@ const MorePaginationWrapper = styled.div`
   .pagination {
     margin-bottom: 20px;
   }
+
+  .MuPaginationItem-icon {
+    font-size: 20px;
+  }
+  .MuPaginationItem-page {
+    margin: 0 9px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 export default MorePaginationWrapper;

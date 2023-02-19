@@ -30,14 +30,17 @@ const AppHeader = memo(() => {
   }
 
   function handleLogoClick() {
+    console.log('home');
     navigate('/home');
   }
 
   return (
     <HeaderWrapper>
       <div className="left">
-        <div className="logo">
-          <IconLogo onClick={handleLogoClick} />
+        <div className="logo-section">
+          <div className="logo" onClick={() => handleLogoClick()}>
+            <IconLogo />
+          </div>
         </div>
       </div>
       <div className="center">
