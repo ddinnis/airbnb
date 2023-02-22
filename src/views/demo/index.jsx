@@ -36,7 +36,7 @@ const DEMO = memo(props => {
       </div>
       <Indicator selectIndex={selectIndex}>
         {list.map(item => {
-          return <button>{item}</button>;
+          return <button key={item}>{item}</button>;
         })}
       </Indicator>
     </DemoWrapper>

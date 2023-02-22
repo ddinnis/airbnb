@@ -27,7 +27,7 @@ const MoreFilter = memo(() => {
                 active: selectItems.includes(item)
               })}
               onClick={() => itemClick(item)}
-              key={item}
+              key={index}
             >
               {item}
             </div>
