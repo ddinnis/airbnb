@@ -1,13 +1,23 @@
 import PropTypes from 'prop-types';
 import React, { memo, useEffect, useState } from 'react';
 import { PicBrowserWrapper } from './style';
-import { IconClose, IconArrowLeft, IconArrowRight } from '@/assets/svg/index';
+import {
+  IconClose,
+  IconArrowLeft,
+  IconArrowRight,
+  IconArrowBottom,
+  IconArrowTop
+} from '@/assets/svg/index';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
+import Indicator from '@/components/indicator';
+import classNames from 'classnames';
 
 const PicBrowser = memo(props => {
   const { picUrls, closeClick } = props;
   const [curIndex, setCurIndex] = useState(0);
   const [isNext, setIsNext] = useState(true);
+  const [isShowList, setIsShowList] = useState(true);
+
   // 图片浏览器展示得时候，滚动功能消失
   useEffect(() => {
     document.body.style.overflow = 'hidden';
@@ -26,6 +36,34 @@ const PicBrowser = memo(props => {
     if (newIndex > picUrls.length - 1) newIndex = 0;
     setCurIndex(newIndex);
     setIsNext(isNext);
+  }
+
+  function handleShowListToggle() {
+    let showList = !isShowList;
+    setIsShowList(showList);
+  }
+
+  const showList = () => {
+    return (
+      <div className="toggle-info">
+        <span>隐藏照片列表</span>
+        <IconArrowBottom />
+      </div>
+    );
+  };
+
+  const noShowList = () => {
+    return (
+      <div className="toggle-info">
+        <span>显示照片列表</span>
+        <IconArrowTop />
+      </div>
+    );
+  };
+
+  function handleImgItemClick(index) {
+    setIsNext(index > curIndex);
+    setCurIndex(index);
   }
 
   return (
@@ -56,7 +94,38 @@ const PicBrowser = memo(props => {
           </SwitchTransition>
         </div>
       </div>
-      <div className="preview"></div>
+      <div className="preview">
+        <div className="info">
+          <div className="desc">
+            <div className="count">
+              <span>
+                {curIndex + 1}/{picUrls.length}:
+              </span>
+              <span>room图片{curIndex + 1}</span>
+            </div>
+            <div className="toggle" onClick={handleShowListToggle}>
+              {isShowList ? showList() : noShowList()}
+            </div>
+          </div>
+          <div className="list" style={{ height: isShowList ? '67px' : '0px' }}>
+            <Indicator selectIndex={curIndex}>
+              {picUrls.map((item, index) => {
+                return (
+                  <div
+                    className={classNames('item', {
+                      active: index === curIndex
+                    })}
+                    onClick={e => handleImgItemClick(index)}
+                    key={item}
+                  >
+                    <img src={item} alt="" />
+                  </div>
+                );
+              })}
+            </Indicator>
+          </div>
+        </div>
+      </div>
     </PicBrowserWrapper>
   );
 });

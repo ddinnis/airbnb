@@ -19,7 +19,7 @@ export const DetailPicturesWrapper = styled.div`
 
   > .pictures {
     width: 100%;
-    height: 600px;
+    height: 45vh;
     display: flex;
 
     &:hover {
@@ -32,7 +32,8 @@ export const DetailPicturesWrapper = styled.div`
         img {
           /* animation-name: 'scaleAnimation'; */
           /* zoom: 1; */
-          transition: opacity 2s ease 0s;
+          /* transition: opacity 2s ease 0s; */
+          transition: all 1s ease 0s;
           transform: scale(1.2);
         }
         .cover {
@@ -62,6 +63,7 @@ export const DetailPicturesWrapper = styled.div`
           height: 100%;
 
           position: relative;
+          object-fit: cover;
         }
         .cover {
           position: absolute;

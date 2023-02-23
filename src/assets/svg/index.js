@@ -9,6 +9,8 @@ import IconMenu from './icon_menu';
 import IconFooterLogo from './icon_footer_logo';
 import IconWB from './icon_weibo.jsx';
 import IconClose from './icon_close.jsx';
+import IconArrowBottom from './icon-arrow-bottom';
+import IconArrowTop from './icon-arrow-top';
 
 export {
   IconLogo,
@@ -21,5 +23,7 @@ export {
   IconMenu,
   IconFooterLogo,
   IconWB,
-  IconClose
+  IconClose,
+  IconArrowTop,
+  IconArrowBottom
 };

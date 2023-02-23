@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 
 const MoreFilterWrapper = styled.div`
+  position: fixed;
+  top: 80px;
+  left: 0;
+  right: 0;
+  z-index: 9;
   display: flex;
   align-items: center;
   height: 48px;
@@ -10,7 +15,6 @@ const MoreFilterWrapper = styled.div`
 
   .filter {
     display: flex;
-
     .item {
       margin: 0 4px 0 8px;
       padding: 6px 12px;

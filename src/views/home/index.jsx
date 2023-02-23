@@ -1,23 +1,25 @@
-import React, { memo, useEffect } from "react";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import React, { memo, useEffect } from 'react';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 
-import HomeBanner from "./c-cpns/home-banner";
-import { HomeWrapper } from "./style";
+import HomeBanner from './c-cpns/home-banner';
+import { HomeWrapper } from './style';
 
-import { fetchHomeDataAction } from "@/store/modules/home";
+import { fetchHomeDataAction } from '@/store/modules/home';
 
-import SectionHeader from "@/components/section-header";
-import SectionRoom from "@/components/section-room";
-import SectionFooter from "@/components/section-footer";
-import HomeSectionTabs from "./c-cpns/home-section-tabs";
-import HomeSectionLongfor from "./c-cpns/home-section-longfor";
-import HomeSectionPlus from "./c-cpns/home-section-plus";
+import SectionHeader from '@/components/section-header';
+import SectionRoom from '@/components/section-room';
+import SectionFooter from '@/components/section-footer';
+import HomeSectionTabs from './c-cpns/home-section-tabs';
+import HomeSectionLongfor from './c-cpns/home-section-longfor';
+import HomeSectionPlus from './c-cpns/home-section-plus';
+import { changeHeaderConfigAction } from '@/store/modules/main';
 
 const Home = memo(() => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchHomeDataAction());
+    dispatch(changeHeaderConfigAction({ isFixed: true }));
   }, [dispatch]);
 
   const {
@@ -26,7 +28,7 @@ const Home = memo(() => {
     homeDiscountInfo,
     hotRecommendInfo,
     longforInfo,
-    homePlusInfo,
+    homePlusInfo
   } = useSelector(
     state => ({
       goodPriceInfo: state.home.goodPriceInfo,
@@ -34,7 +36,7 @@ const Home = memo(() => {
       homeDiscountInfo: state.home.homeDiscountInfo,
       hotRecommendInfo: state.home.hotRecommendInfo,
       longforInfo: state.home.longforInfo,
-      homePlusInfo: state.home.homePlusInfo,
+      homePlusInfo: state.home.homePlusInfo
     }),
     shallowEqual
   );
@@ -61,7 +63,7 @@ const Home = memo(() => {
         </div>
         <div className="good-price">
           <SectionHeader title={goodPriceInfo.title} />
-          <SectionRoom roomList={goodPriceInfo.list} itemWidth={"25%"} />
+          <SectionRoom roomList={goodPriceInfo.list} itemWidth={'25%'} />
           <SectionFooter />
         </div>
         <div className="high-score">
@@ -69,7 +71,7 @@ const Home = memo(() => {
             title={highScoreInfo.title}
             subTitle={highScoreInfo.subtitle}
           />
-          <SectionRoom roomList={highScoreInfo.list} itemWidth={"25%"} />
+          <SectionRoom roomList={highScoreInfo.list} itemWidth={'25%'} />
           <SectionFooter />
         </div>
         <div className="homePlus">

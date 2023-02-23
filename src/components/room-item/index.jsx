@@ -16,7 +16,7 @@ const RoomItem = memo(props => {
   const carouselRef = useRef();
   const color = itemData.verify_info.text_color;
 
-  function handleArrowClick(isRightClick = true) {
+  function handleArrowClick(isRightClick = true, event) {
     isRightClick ? carouselRef.current.next() : carouselRef.current.prev();
 
     let newIndex = isRightClick ? selectIndex + 1 : selectIndex - 1;
@@ -25,6 +25,8 @@ const RoomItem = memo(props => {
     if (newIndex < 0) newIndex = itemData.picture_urls.length - 1;
 
     setSelectIndex(newIndex);
+
+    event.stopPropagation();
   }
 
   function handleRoomItemClick() {
@@ -41,10 +43,10 @@ const RoomItem = memo(props => {
   const swiperElement = (
     <div className="swiper">
       <div className="control">
-        <div className="btn left" onClick={() => handleArrowClick(false)}>
+        <div className="btn left" onClick={e => handleArrowClick(false, e)}>
           <IconArrowLeft width="30" height="30" />
         </div>
-        <div className="btn right" onClick={() => handleArrowClick()}>
+        <div className="btn right" onClick={e => handleArrowClick(true, e)}>
           <IconArrowRight width="30" height="30" />
         </div>
       </div>

@@ -31,7 +31,7 @@ const DetailPictures = memo(props => {
       </div>
 
       <div className="show-btn" onClick={() => setShowBro(true)}>
-        show pics
+        查看照片
       </div>
       {showBro && (
         <PicBrowser

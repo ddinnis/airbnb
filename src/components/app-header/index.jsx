@@ -9,11 +9,22 @@ import {
   IconSearchBar
 } from '@/assets/svg';
 import { useNavigate } from 'react-router-dom';
+import { shallowEqual, useSelector } from 'react-redux';
+import classNames from 'classnames';
 
 const AppHeader = memo(() => {
   const [showPanel, setShowPanel] = useState(false);
   const navigate = useNavigate();
 
+  const { headerConfig } = useSelector(
+    state => ({
+      headerConfig: state.main.headerConfig
+    }),
+    shallowEqual
+  );
+
+  const { isFixed } = headerConfig;
+  console.log('isFixed', isFixed);
   useEffect(() => {
     function windowClick() {
       setShowPanel(false);
@@ -35,7 +46,7 @@ const AppHeader = memo(() => {
   }
 
   return (
-    <HeaderWrapper>
+    <HeaderWrapper className={classNames({ fixed: isFixed })}>
       <div className="left">
         <div className="logo-section">
           <div className="logo" onClick={() => handleLogoClick()}>
