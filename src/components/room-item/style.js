@@ -86,6 +86,8 @@ export const RoomItemWrapper = styled.div`
         width: 83px;
         height: 100%;
         &.left {
+          position: relative;
+          z-index: 999;
           background: linear-gradient(
             to left,
             transparent 0%,
@@ -93,6 +95,8 @@ export const RoomItemWrapper = styled.div`
           );
         }
         &.right {
+          position: relative;
+          z-index: 999;
           background: linear-gradient(
             to right,
             transparent 0%,

@@ -1,10 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {
+  createSlice
+} from '@reduxjs/toolkit';
 
 const mainSlice = createSlice({
   name: 'main',
   initialState: {
     headerConfig: {
-      isFixed: true
+      isFixed: true,
+      topAlpha: false
     }
   },
   reducers: {
@@ -14,6 +17,8 @@ const mainSlice = createSlice({
   }
 });
 
-export const { changeHeaderConfigAction } = mainSlice.actions;
+export const {
+  changeHeaderConfigAction
+} = mainSlice.actions;
 
 export default mainSlice.reducer;

@@ -16,7 +16,7 @@ const more = memo(() => {
 
   useEffect(() => {
     dispatch(fetchMoreDataAction());
-    dispatch(changeHeaderConfigAction({ isFixed: true }));
+    dispatch(changeHeaderConfigAction({ isFixed: true,topAlpha:false }));
   }, [dispatch]);
 
   // const { roomList, totalCount } = useSelector(state => ({
